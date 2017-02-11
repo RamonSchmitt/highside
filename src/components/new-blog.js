@@ -5,8 +5,8 @@ export default class NewBlog extends Component {
     return (
       <form className="input-group">
         <input
-        placeholder="Title"
-        className="form-control" />
+          placeholder="Title"
+          className="form-control" />
         <span className="input-group-btn">
           <button type="submit" className="btn btn-secondary">Add Blog</button>
         </span>
