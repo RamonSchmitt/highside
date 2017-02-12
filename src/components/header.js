@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
 export default class Header extends Component {
+  state = {
+    loggedIn: false
+  }
+  
   render() {
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
-            <button type="button" className="btn btn-default navbar-btn">Sign in</button>
+            <button type="button" className="btn btn-default navbar-btn">Login</button>
           </div>
         </div>
       </nav>
