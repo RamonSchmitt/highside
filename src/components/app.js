@@ -7,7 +7,11 @@ export default class App extends Component {
 
     this.state = {
       data: [],
-      post: {}
+      post: {
+        title: "",
+        excerpt: "",
+        body: ""
+      }
     }
   }
 
@@ -26,20 +30,26 @@ export default class App extends Component {
   }
 
   onTitleChange(event) {
-    this.setState(this.state = {post: {title: event.target.value}})
+    this.setState({post: { ...this.state.post, title: event.target.value }});
   }
 
   onExcerptChange(event) {
-    this.setState(this.state = {post: {excerpt: event.target.value})
+    this.setState({post: { ...this.state.post, excerpt: event.target.value }});
   }
 
   onBodyChange(event) {
-    this.setState(this.state = {post: {body: event.target.value})
-    console.log(this.state);
+    this.setState({post: { ...this.state.post, body: event.target.value }});
   }
 
   handleSubmit(event) {
     event.preventDefault();
+
+    this.state.data.push(this.state.post);
+    console.log(this.state.data);
+
+    this.refs.inputTitle.value="";
+    this.refs.inputExcerpt.value="";
+    this.refs.inputBody.value="";
   }
 
   render() {
@@ -47,25 +57,28 @@ export default class App extends Component {
       <div className="container">
         <form className="input-group">
           <input
+            ref="inputTitle"
             type="text"
             placeholder="Title"
             className="form-control"
             onChange={event => this.onTitleChange(event)} />
 
           <input
+            ref="inputExcerpt"
             type="text"
             placeholder="Description"
             className="form-control"
             onChange={event => this.onExcerptChange(event)} />
 
           <input
+            ref="inputBody"
             type="text"
             placeholder="Your Story"
             className="form-control"
             onChange={event => this.onBodyChange(event)} />
 
           <span className="input-group-btn">
-            <button onClick={event => this.handleSubmit(event)} className="btn btn-secondary">Add Blog</button>
+            <button type="button" onClick={event => this.handleSubmit(event)} className="btn btn-secondary">Add Blog</button>
           </span>
         </form>
         <BlogList data={this.state.data}/>
