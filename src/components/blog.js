@@ -12,7 +12,7 @@ export default class Blog extends Component {
         <tbody>
           <tr>
             <td>
-              <h5>{this.props.excerpt}</h5>
+              <h6>{this.props.excerpt}</h6>
               <p>{this.props.body}</p>
             </td>
           </tr>
